@@ -4,7 +4,7 @@ object Day01 {
     }
 
     fun partTwo(depths: List<Int>): Int {
-        return depths.windowed(3, 1).map{it.sum()}.zipWithNext{a, b -> b > a}.count{ it }
+        return partOne(depths.windowed(3, 1).map{it.sum()})
     }
 
     val input = listOf(
