@@ -1,10 +1,10 @@
 object Day01 {
     fun partOne(depths: List<Int>): Int {
-        return depths.zipWithNext{a, b -> b > a}.count{ it }
+        return depths.zipWithNext { a, b -> b > a }.count { it }
     }
 
     fun partTwo(depths: List<Int>): Int {
-        return 0
+        return depths.windowed(3, 1).map{it.sum()}.zipWithNext{a, b -> b > a}.count{ it }
     }
 
     val input = listOf(
