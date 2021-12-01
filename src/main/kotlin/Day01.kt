@@ -1,14 +1,6 @@
 object Day01 {
     fun partOne(depths: List<Int>): Int {
-        var prev: Int? = null
-        var increaseDepthCount = 0
-        for (depth in depths) {
-            if (prev != null && depth > prev) {
-                increaseDepthCount++
-            }
-            prev = depth
-        }
-        return increaseDepthCount
+        return depths.zipWithNext{a, b -> b > a}.count{ it }
     }
 
     fun partTwo(depths: List<Int>): Int {
