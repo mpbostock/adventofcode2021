@@ -3,8 +3,7 @@ package mpbostock
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
-internal class Day01Test
-{
+internal class Day01Test {
     @Test
     internal fun noIncrementsIfAllDecrement() {
         val depths = listOf(3, 2, 1)
