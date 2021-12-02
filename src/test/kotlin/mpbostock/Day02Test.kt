@@ -96,4 +96,77 @@ internal class Day02Test {
         val partOneMultiple = partOne(journey)
         assertEquals(4, partOneMultiple)
     }
+
+
+    @Test
+    internal fun horizontalIncreasesIfPositionIsMovedForwardWithAim() {
+        val initialPos = Position()
+        val move = Move(Direction.FORWARD, 5)
+        val newPosition = initialPos.moveWithAim(move)
+        assertEquals(5, newPosition.horizontal)
+    }
+
+    @Test
+    internal fun depthDoesNotChangeIfPositionIsMovedForwardWithAimAndAimIsZero() {
+        val initialPos = Position(depth = 10)
+        val move = Move(Direction.FORWARD, 5)
+        val newPosition = initialPos.moveWithAim(move)
+        assertEquals(10, newPosition.depth)
+    }
+
+    @Test
+    internal fun depthChangesIfPositionIsMovedForwardWithAimAndAimIsNonZero() {
+        val initialPos = Position(depth = 10, aim = 1)
+        val move = Move(Direction.FORWARD, 5)
+        val newPosition = initialPos.moveWithAim(move)
+        assertEquals(15, newPosition.depth)
+    }
+
+    @Test
+    internal fun aimIncreasesIfPositionIsMovedDownWithAim() {
+        val initialPos = Position()
+        val move = Move(Direction.DOWN, 5)
+        val newPosition = initialPos.moveWithAim(move)
+        assertEquals(5, newPosition.aim)
+    }
+
+    @Test
+    internal fun depthDoesNotIncreaseIfPositionIsMovedDownWithAim() {
+        val initialPos = Position()
+        val move = Move(Direction.DOWN, 5)
+        val newPosition = initialPos.moveWithAim(move)
+        assertEquals(0, newPosition.depth)
+    }
+
+    @Test
+    internal fun horizontalDoesNotChangeIfPositionIsMovedDownWithAim() {
+        val initialPos = Position(horizontal = 10)
+        val move = Move(Direction.DOWN, 5)
+        val newPosition = initialPos.moveWithAim(move)
+        assertEquals(10, newPosition.horizontal)
+    }
+
+    @Test
+    internal fun aimDecreasesIfPositionIsMovedUpWithAim() {
+        val initialPos = Position(aim = 10)
+        val move = Move(Direction.UP, 5)
+        val newPosition = initialPos.moveWithAim(move)
+        assertEquals(5, newPosition.aim)
+    }
+
+    @Test
+    internal fun depthDoesNotDecreaseIfPositionIsMovedUpWithAim() {
+        val initialPos = Position()
+        val move = Move(Direction.UP, 5)
+        val newPosition = initialPos.moveWithAim(move)
+        assertEquals(0, newPosition.depth)
+    }
+
+    @Test
+    internal fun horizontalDoesNotChangeIfPositionIsMovedUpWithAim() {
+        val initialPos = Position(horizontal = 10)
+        val move = Move(Direction.UP, 5)
+        val newPosition = initialPos.moveWithAim(move)
+        assertEquals(10, newPosition.horizontal)
+    }
 }
