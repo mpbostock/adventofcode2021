@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 internal class Day02Test {
     @Test
     internal fun horizontalIncreasesIfPositionIsMovedForward() {
-        val initialPos = Position(0, 0)
+        val initialPos = Position()
         val move = Move(Direction.FORWARD, 5)
         val newPosition = initialPos.move(move)
         assertEquals(5, newPosition.horizontal)
@@ -18,7 +18,7 @@ internal class Day02Test {
 
     @Test
     internal fun depthDoesNotChangeIfPositionIsMovedForward() {
-        val initialPos = Position(0, 10)
+        val initialPos = Position(depth = 10)
         val move = Move(Direction.FORWARD, 5)
         val newPosition = initialPos.move(move)
         assertEquals(10, newPosition.depth)
@@ -26,7 +26,7 @@ internal class Day02Test {
 
     @Test
     internal fun depthIncreasesIfPositionIsMovedDown() {
-        val initialPos = Position(0, 0)
+        val initialPos = Position()
         val move = Move(Direction.DOWN, 5)
         val newPosition = initialPos.move(move)
         assertEquals(5, newPosition.depth)
@@ -34,7 +34,7 @@ internal class Day02Test {
 
     @Test
     internal fun horizontalDoesNotChangeIfPositionIsMovedDown() {
-        val initialPos = Position(10, 0)
+        val initialPos = Position(horizontal = 10)
         val move = Move(Direction.DOWN, 5)
         val newPosition = initialPos.move(move)
         assertEquals(10, newPosition.horizontal)
@@ -42,7 +42,7 @@ internal class Day02Test {
 
     @Test
     internal fun depthDecreasesIfPositionIsMovedUp() {
-        val initialPos = Position(0, 10)
+        val initialPos = Position(depth = 10)
         val move = Move(Direction.UP, 5)
         val newPosition = initialPos.move(move)
         assertEquals(5, newPosition.depth)
@@ -50,7 +50,7 @@ internal class Day02Test {
 
     @Test
     internal fun horizontalDoesNotChangeIfPositionIsMovedUp() {
-        val initialPos = Position(10, 0)
+        val initialPos = Position(horizontal = 10)
         val move = Move(Direction.UP, 5)
         val newPosition = initialPos.move(move)
         assertEquals(10, newPosition.horizontal)
@@ -58,7 +58,7 @@ internal class Day02Test {
 
     @Test
     internal fun positionMultipleIsHorizontalMultipliedByDepth() {
-        val position = Position(10, 10)
+        val position = Position(horizontal = 10, depth = 10)
         assertEquals(100, position.multiple())
     }
 

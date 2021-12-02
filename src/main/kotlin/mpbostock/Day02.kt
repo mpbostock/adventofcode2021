@@ -1,10 +1,10 @@
 package mpbostock
 
 object Day02 {
-    enum class Direction(val text: String) {
-        FORWARD("forward"),
-        UP("up"),
-        DOWN("down")
+    enum class Direction{
+        FORWARD,
+        UP,
+        DOWN
     }
 
     data class Position(val horizontal: Int = 0, val depth: Int = 0) {
@@ -32,7 +32,7 @@ object Day02 {
     }
 
     fun partOne(moves: List<Move>): Int {
-        var currentPosition = Position(0, 0)
+        var currentPosition = Position()
         for (move in moves) {
             currentPosition = currentPosition.move(move)
         }
