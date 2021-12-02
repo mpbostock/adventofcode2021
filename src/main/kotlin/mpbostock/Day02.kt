@@ -7,12 +7,19 @@ object Day02 {
         DOWN
     }
 
-    data class Position(val horizontal: Int = 0, val depth: Int = 0) {
+    data class Position(val horizontal: Int = 0, val depth: Int = 0, val aim: Int = 0) {
         fun move(move: Move): Position {
             return when (move.direction) {
                 Direction.FORWARD -> copy(horizontal = horizontal + move.amount)
                 Direction.UP -> copy(depth =  depth - move.amount)
                 Direction.DOWN -> copy(depth = depth + move.amount)
+            }
+        }
+        fun moveWithAim(move: Move): Position {
+            return when (move.direction) {
+                Direction.FORWARD -> copy(horizontal = horizontal + move.amount, depth = depth + (aim * move.amount))
+                Direction.UP -> copy(aim = aim - move.amount)
+                Direction.DOWN -> copy(aim = aim + move.amount)
             }
         }
         fun multiple(): Int {
@@ -39,6 +46,14 @@ object Day02 {
         return currentPosition.multiple()
     }
 
+    fun partTwo(moves: List<Move>): Int {
+        var currentPosition = Position()
+        for (move in moves) {
+            currentPosition = currentPosition.moveWithAim(move)
+        }
+        return currentPosition.multiple()
+    }
+
     @JvmStatic
     fun main(args: Array<String>) {
         val input = FileIO.readInput("day02input.txt", Move::fromString)
@@ -46,5 +61,7 @@ object Day02 {
         val partOneSolution = partOne(input)
         println(partOneSolution)
 
+        val partTwoSolution = partTwo(input)
+        println(partTwoSolution)
     }
 }
