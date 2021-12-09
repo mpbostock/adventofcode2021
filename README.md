@@ -22,7 +22,7 @@ Alternatively, open this in IntelliJ and the tests can be ran from there.
 | 04 | Day04Test | [Day04](./src/main/kotlin/mpbostock/Day04.kt) | ** |
 | 05 | [Day05Test](./src/test/kotlin/mpbostock/Day05Test.kt) | [Day05](./src/main/kotlin/mpbostock/Day05.kt) | ** |
 | 06 | [Day06Test](./src/test/kotlin/mpbostock/Day06Test.kt) | [Day06](./src/main/kotlin/mpbostock/Day06.kt) | ** |
-| 07 | Day07Test | Day07 |    |
+| 07 | [Day07Test](./src/test/kotlin/mpbostock/Day07Test.kt) | [Day07](./src/main/kotlin/mpbostock/Day07.kt) |    |
 | 08 | Day08Test | Day08 |    |
 | 09 | [Day09Test](./src/test/kotlin/mpbostock/Day09Test.kt) | [Day09](./src/main/kotlin/mpbostock/Day09.kt) |    |
 | 10 | Day10Test | Day10 |    |
