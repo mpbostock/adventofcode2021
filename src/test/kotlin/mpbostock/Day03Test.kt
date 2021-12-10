@@ -2,7 +2,7 @@ package mpbostock
 
 import mpbostock.Day03.BitCounter
 import mpbostock.Day03.BitsCounter
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class Day03Test {

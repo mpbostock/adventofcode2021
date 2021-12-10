@@ -4,7 +4,7 @@ import mpbostock.Day02.Direction
 import mpbostock.Day02.Move
 import mpbostock.Day02.Position
 import mpbostock.Day02.partOne
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class Day02Test {

@@ -2,7 +2,8 @@ package mpbostock
 
 import mpbostock.Day05.Coordinate
 import mpbostock.Day09.HeightMap
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 internal class Day09Test {

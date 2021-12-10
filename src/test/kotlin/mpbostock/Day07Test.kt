@@ -3,7 +3,7 @@ package mpbostock
 import mpbostock.Day07.ExponentialFuelBurner
 import mpbostock.Day07.calculateFuelCosts
 import mpbostock.Day07.calculateMinFuel
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class Day07Test {

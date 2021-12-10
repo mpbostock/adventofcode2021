@@ -2,7 +2,8 @@ package mpbostock
 
 import mpbostock.Day06.changeStates
 import mpbostock.Day06.initialiseStates
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertArrayEquals
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class Day06Test {
