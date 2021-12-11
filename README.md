@@ -26,18 +26,4 @@ Alternatively, open this in IntelliJ and the tests can be ran from there.
 | 08 | [Day08Test](./src/test/kotlin/mpbostock/Day08Test.kt) | [Day08](./src/main/kotlin/mpbostock/Day08.kt) | ** |
 | 09 | [Day09Test](./src/test/kotlin/mpbostock/Day09Test.kt) | [Day09](./src/main/kotlin/mpbostock/Day09.kt) | ** |
 | 10 | [Day10Test](./src/test/kotlin/mpbostock/Day10Test.kt) | [Day10](./src/main/kotlin/mpbostock/Day10.kt) | ** |
-| 11 | Day11Test | Day11 |    |
-| 12 | Day12Test | Day12 |    |
-| 13 | Day13Test | Day13 |    |
-| 14 | Day14Test | Day14 |    |
-| 15 | Day15Test | Day15 |    |
-| 16 | Day16Test | Day16 |    |
-| 17 | Day17Test | Day17 |    |
-| 18 | Day18Test | Day18 |    |
-| 19 | Day19Test | Day19 |    |
-| 20 | Day20Test | Day20 |    |
-| 21 | Day21Test | Day21 |    |
-| 22 | Day22Test | Day22 |    |
-| 23 | Day23Test | Day23 |    |
-| 24 | Day24Test | Day24 |    |
-| 25 | Day25Test | Day25 |    |
+| 11 | [Day11Test](./src/test/kotlin/mpbostock/Day11Test.kt) | [Day11](./src/main/kotlin/mpbostock/Day11.kt) | ** |
