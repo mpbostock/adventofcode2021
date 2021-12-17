@@ -1,6 +1,7 @@
 package mpbostock
 
 import mpbostock.Day05.Coordinate
+import mpbostock.Graph.findShortestPath
 import java.util.function.Function
 
 object Day15 {
@@ -32,29 +33,8 @@ object Day15 {
             return coords
         }
 
-        // Dijkstra's algorithm
         fun findLowestRiskPath(): Int {
-            val coordRisks = emptyMap<Coordinate, Int>().toMutableMap()
-            val queue = ArrayDeque<Coordinate>()
-            val visitedCoords = emptySet<Coordinate>().toMutableSet()
-            allCoords().forEach { coordinate ->
-                if (coordinate == start) coordRisks[coordinate] = 0 else coordRisks[coordinate] = Int.MAX_VALUE
-                queue.add(coordinate)
-            }
-
-            while (queue.isNotEmpty()) {
-                val minRiskCoord = coordRisks.filter { !visitedCoords.contains(it.key) }.minByOrNull { it.value }
-                val coord = minRiskCoord!!.key
-                val risk = minRiskCoord.value
-                queue.remove(coord)
-                visitedCoords.add(coord)
-
-                for (neighbour in getNeighbourCoords(coord)) {
-                    val alt = risk + (getRiskLevel(neighbour))
-                    if (alt < coordRisks.getValue(neighbour)) coordRisks[neighbour] = alt
-                }
-            }
-            return coordRisks.getValue(end)
+            return allCoords().findShortestPath(this::getNeighbourCoords, this::getRiskLevel, start, end)
         }
 
         companion object {
@@ -80,8 +60,10 @@ object Day15 {
     @JvmStatic
     fun main(args: Array<String>) {
         val input = FileIO.readInput("day15input.txt", Function.identity())
-        val partOne = Chiton.read(input).findLowestRiskPath()
+        val partOneChiton = Chiton.read(input)
+        val partOne = partOneChiton.findLowestRiskPath()
         println(partOne)
 
     }
 }
+
