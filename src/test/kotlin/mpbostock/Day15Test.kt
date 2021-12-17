@@ -1,11 +1,12 @@
 package mpbostock
 
 import mpbostock.Day15.Chiton
+import mpbostock.Day15.Chiton.Companion.expand
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 internal class Day15Test {
-    val testInputPartOne = listOf(
+    val testInputPartOne = arrayListOf(
         "1163751742",
         "1381373672",
         "2136511328",
@@ -20,7 +21,7 @@ internal class Day15Test {
 
     val testChitonPartOne = Chiton.read(testInputPartOne)
 
-    val testInputPartTwo = listOf(
+    val testInputPartTwo = arrayListOf(
         "11637517422274862853338597396444961841755517295286",
         "13813736722492484783351359589446246169155735727126",
         "21365113283247622439435873354154698446526571955763",
@@ -73,15 +74,19 @@ internal class Day15Test {
         "67554889357866599146897761125791887223681299833479"
     )
 
-    val testChitonPartTwo = Chiton.read(testInputPartTwo)
-
     @Test
     fun partOneShortestPathIs40() {
         assertEquals(40, testChitonPartOne.findLowestRiskPath())
     }
 
     @Test
+    fun expandPartOneMatchesPartTwoInput() {
+        val expanded = expand(testInputPartOne)
+        assertEquals(testInputPartTwo, expanded)
+    }
+
+    @Test
     fun partTwoShortestPathIs315() {
-        assertEquals(315, testChitonPartTwo.findLowestRiskPath())
+        assertEquals(315, Chiton.expandAndRead(testInputPartOne).findLowestRiskPath())
     }
 }
