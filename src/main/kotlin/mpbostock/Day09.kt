@@ -1,6 +1,6 @@
 package mpbostock
 
-import mpbostock.Day05.Coordinate
+import mpbostock.Day05.Vector2d
 import java.util.function.Function
 
 object Day09 {
@@ -12,7 +12,7 @@ object Day09 {
             val dips = emptyList<Int>().toMutableList()
             for (x in 0 until width) {
                 for ( y in 0 until height) {
-                    val coord = Coordinate(x, y)
+                    val coord = Vector2d(x, y)
                     if (isDip(coord)) dips.add(getHeight(coord) + 1)
                 }
             }
@@ -20,22 +20,22 @@ object Day09 {
         }
 
         fun multiplyBasins(): Int {
-            val basins = emptyList<List<Coordinate>>().toMutableList()
-            val checkedCoords = emptySet<Coordinate>().toMutableSet()
+            val basins = emptyList<List<Vector2d>>().toMutableList()
+            val checkedCoords = emptySet<Vector2d>().toMutableSet()
             for (x in 0 until width) {
                 for ( y in 0 until height) {
-                    val coord = Coordinate(x, y)
-                    basins.add(processBasin(coord, checkedCoords, emptyList<Coordinate>().toMutableList()))
+                    val coord = Vector2d(x, y)
+                    basins.add(processBasin(coord, checkedCoords, emptyList<Vector2d>().toMutableList()))
                 }
             }
             return basins.groupingBy { it.size }.eachCount().keys.sortedDescending().take(3).reduce{ acc, next -> acc * next }
         }
 
-        fun isDip(coord: Coordinate) = getNeighbourValues(coord).all { it > getHeight(coord)}
+        fun isDip(coord: Vector2d) = getNeighbourValues(coord).all { it > getHeight(coord)}
 
-        fun isBasin(coord: Coordinate) = getHeight(coord) != 9
+        fun isBasin(coord: Vector2d) = getHeight(coord) != 9
 
-        fun processBasin(coord: Coordinate, checkedCoords: MutableSet<Coordinate>, basin: MutableList<Coordinate>): List<Coordinate> {
+        fun processBasin(coord: Vector2d, checkedCoords: MutableSet<Vector2d>, basin: MutableList<Vector2d>): List<Vector2d> {
             if (!checkedCoords.contains(coord)) {
                 if (isBasin(coord)) {
                     checkedCoords.add(coord)
@@ -48,19 +48,19 @@ object Day09 {
             return basin
         }
 
-        fun getNeighbourValues(coord: Coordinate) = getNeighbourCoords(coord).map { getHeight(it) }
+        fun getNeighbourValues(coord: Vector2d) = getNeighbourCoords(coord).map { getHeight(it) }
 
-        private fun getNeighbourCoords(coord: Coordinate): List<Coordinate> {
+        private fun getNeighbourCoords(coord: Vector2d): List<Vector2d> {
             val (x, y) = coord
-            val neighbours = emptyList<Coordinate>().toMutableList()
-            if (x > 0) neighbours.add(Coordinate(x - 1, y))
-            if (x < width - 1) neighbours.add(Coordinate(x + 1, y))
-            if (y > 0) neighbours.add(Coordinate(x, y - 1))
-            if (y < height - 1) neighbours.add(Coordinate(x, y + 1))
+            val neighbours = emptyList<Vector2d>().toMutableList()
+            if (x > 0) neighbours.add(Vector2d(x - 1, y))
+            if (x < width - 1) neighbours.add(Vector2d(x + 1, y))
+            if (y > 0) neighbours.add(Vector2d(x, y - 1))
+            if (y < height - 1) neighbours.add(Vector2d(x, y + 1))
             return neighbours
         }
 
-        private fun getHeight(coord: Coordinate) = heights[coord.y][coord.x]
+        private fun getHeight(coord: Vector2d) = heights[coord.y][coord.x]
 
         companion object {
             fun read(fileInput: List<String>): HeightMap {

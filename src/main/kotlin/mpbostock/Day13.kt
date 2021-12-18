@@ -1,18 +1,18 @@
 package mpbostock
 
-import mpbostock.Day05.Coordinate
+import mpbostock.Day05.Vector2d
 import java.lang.StringBuilder
 import java.util.function.Function
 
 object Day13 {
 
-    fun Set<Coordinate>.print(): String {
-        val min = Coordinate(this.minOf { it.x }, this.minOf { it.y })
-        val max = Coordinate(this.maxOf { it.x }, this.maxOf { it.y })
+    fun Set<Vector2d>.print(): String {
+        val min = Vector2d(this.minOf { it.x }, this.minOf { it.y })
+        val max = Vector2d(this.maxOf { it.x }, this.maxOf { it.y })
         val builder = StringBuilder()
         for (y in min.y..max.y) {
             for (x in min.x..max.x) {
-                val char = if (this.contains(Coordinate(x, y))) '#' else '.'
+                val char = if (this.contains(Vector2d(x, y))) '#' else '.'
                 builder.append(char)
             }
             if (y < max.y) builder.appendLine()
@@ -31,7 +31,7 @@ object Day13 {
     }
 
     data class Fold(val type: FoldType, val line: Int) {
-        fun foldCoord(coord: Coordinate): Coordinate {
+        fun foldCoord(coord: Vector2d): Vector2d {
             return when (type) {
                 FoldType.HORIZONTAL -> {
                     if (coord.y > line) coord.copy(y = coord.y - 2 * (coord.y - line)) else coord
@@ -50,7 +50,7 @@ object Day13 {
         }
     }
 
-    data class TransparentPaper(val dots: List<Coordinate>, val folds: ArrayDeque<Fold>) {
+    data class TransparentPaper(val dots: List<Vector2d>, val folds: ArrayDeque<Fold>) {
         fun foldOnce(): TransparentPaper {
             return when {
                 folds.isNotEmpty() -> {
@@ -64,12 +64,12 @@ object Day13 {
 
         companion object {
             fun fromStrings(strings: List<String>): TransparentPaper {
-                val dots = strings.filter { it.contains(',') }.map { Coordinate.fromFile(it) }
+                val dots = strings.filter { it.contains(',') }.map { Vector2d.fromFile(it) }
                 val folds = ArrayDeque(strings.filter { it.contains(Fold.foldPrefix) }.map { Fold.fromString(it) })
                 return TransparentPaper(dots, folds)
             }
 
-            fun foldDots(dots: List<Coordinate>, fold: Fold): List<Coordinate> {
+            fun foldDots(dots: List<Vector2d>, fold: Fold): List<Vector2d> {
                 return dots.map { fold.foldCoord(it) }.distinct()
             }
 

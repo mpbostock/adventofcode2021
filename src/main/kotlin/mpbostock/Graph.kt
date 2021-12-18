@@ -1,6 +1,6 @@
 package mpbostock
 
-import mpbostock.Day05.Coordinate
+import mpbostock.Day05.Vector2d
 
 object Graph {
     fun Array<IntArray>.findShortestPath (): Int {
@@ -28,21 +28,21 @@ object Graph {
         return weights[height - 1][width - 1]
     }
 
-    private fun adjacentCoords(coord: Coordinate, width: Int, height: Int): List<Coordinate> {
+    private fun adjacentCoords(coord: Vector2d, width: Int, height: Int): List<Vector2d> {
         val (x, y) = coord
-        val neighbours = emptyList<Coordinate>().toMutableList()
-        if (x > 0) neighbours.add(Coordinate(x - 1, y))
-        if (x < width - 1) neighbours.add(Coordinate(x + 1, y))
-        if (y > 0) neighbours.add(Coordinate(x, y - 1))
-        if (y < height - 1) neighbours.add(Coordinate(x, y + 1))
+        val neighbours = emptyList<Vector2d>().toMutableList()
+        if (x > 0) neighbours.add(Vector2d(x - 1, y))
+        if (x < width - 1) neighbours.add(Vector2d(x + 1, y))
+        if (y > 0) neighbours.add(Vector2d(x, y - 1))
+        if (y < height - 1) neighbours.add(Vector2d(x, y + 1))
         return neighbours
     }
 
-    private fun allCoords(width: Int, height: Int): List<Coordinate> {
-        val coords = emptyList<Coordinate>().toMutableList()
+    private fun allCoords(width: Int, height: Int): List<Vector2d> {
+        val coords = emptyList<Vector2d>().toMutableList()
         for (x in 0 until width) {
             for (y in 0 until height) {
-                coords.add(Coordinate(x, y))
+                coords.add(Vector2d(x, y))
             }
         }
         return coords

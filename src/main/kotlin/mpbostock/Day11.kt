@@ -1,6 +1,6 @@
 package mpbostock
 
-import mpbostock.Day05.Coordinate
+import mpbostock.Day05.Vector2d
 import java.util.function.Function
 
 object Day11 {
@@ -32,43 +32,43 @@ object Day11 {
             return flashedOctopuses.size
         }
 
-        private fun allCoords(): List<Coordinate> {
-            val coords = emptyList<Coordinate>().toMutableList()
+        private fun allCoords(): List<Vector2d> {
+            val coords = emptyList<Vector2d>().toMutableList()
             for (x in 0 until width) {
                 for (y in 0 until height) {
-                    coords.add(Coordinate(x, y))
+                    coords.add(Vector2d(x, y))
                 }
             }
             return coords
         }
 
-        private fun getEnergy(coord: Coordinate) = octopusEnergies[coord.y][coord.x]
+        private fun getEnergy(coord: Vector2d) = octopusEnergies[coord.y][coord.x]
 
-        private fun increaseEnergy(coord: Coordinate) = octopusEnergies[coord.y][coord.x]++
-        private fun increaseEnergy(coords: Collection<Coordinate>) {
+        private fun increaseEnergy(coord: Vector2d) = octopusEnergies[coord.y][coord.x]++
+        private fun increaseEnergy(coords: Collection<Vector2d>) {
             coords.forEach { increaseEnergy(it) }
         }
 
-        private fun resetEnergy(coord: Coordinate) {
+        private fun resetEnergy(coord: Vector2d) {
             octopusEnergies[coord.y][coord.x] = 0
         }
-        private fun resetEnergy(coords: Collection<Coordinate>) {
+        private fun resetEnergy(coords: Collection<Vector2d>) {
             coords.forEach { resetEnergy(it) }
         }
 
-        private fun isFlash(coord: Coordinate) = getEnergy(coord) > 9
+        private fun isFlash(coord: Vector2d) = getEnergy(coord) > 9
 
-        private fun processFlashes(): Set<Coordinate> {
-            val flashedOctopuses = emptySet<Coordinate>().toMutableSet()
+        private fun processFlashes(): Set<Vector2d> {
+            val flashedOctopuses = emptySet<Vector2d>().toMutableSet()
             for (x in 0 until width) {
                 for (y in 0 until height) {
-                    processOctopus(Coordinate(x, y), flashedOctopuses)
+                    processOctopus(Vector2d(x, y), flashedOctopuses)
                 }
             }
             return flashedOctopuses
         }
 
-        private fun processOctopus(octopus: Coordinate, flashedOctoupuses: MutableSet<Coordinate>) {
+        private fun processOctopus(octopus: Vector2d, flashedOctoupuses: MutableSet<Vector2d>) {
             if (isFlash(octopus) && !flashedOctoupuses.contains(octopus)) {
                 flashedOctoupuses.add(octopus)
                 val neighbourCoords = getNeighbourCoords(octopus)
@@ -79,21 +79,21 @@ object Day11 {
             }
         }
 
-        private fun getNeighbourCoords(coord: Coordinate): List<Coordinate> {
+        private fun getNeighbourCoords(coord: Vector2d): List<Vector2d> {
             val (x, y) = coord
-            val neighbours = emptyList<Coordinate>().toMutableList()
+            val neighbours = emptyList<Vector2d>().toMutableList()
             if (x > 0) {
-                neighbours.add(Coordinate(x - 1, y))
-                if (y > 0) neighbours.add(Coordinate(x - 1, y - 1))
-                if (y < height - 1) neighbours.add(Coordinate(x - 1, y + 1))
+                neighbours.add(Vector2d(x - 1, y))
+                if (y > 0) neighbours.add(Vector2d(x - 1, y - 1))
+                if (y < height - 1) neighbours.add(Vector2d(x - 1, y + 1))
             }
             if (x < width - 1) {
-                neighbours.add(Coordinate(x + 1, y))
-                if (y > 0) neighbours.add(Coordinate(x + 1, y - 1))
-                if (y < height - 1) neighbours.add(Coordinate(x + 1, y + 1))
+                neighbours.add(Vector2d(x + 1, y))
+                if (y > 0) neighbours.add(Vector2d(x + 1, y - 1))
+                if (y < height - 1) neighbours.add(Vector2d(x + 1, y + 1))
             }
-            if (y > 0) neighbours.add(Coordinate(x, y - 1))
-            if (y < height - 1) neighbours.add(Coordinate(x, y + 1))
+            if (y > 0) neighbours.add(Vector2d(x, y - 1))
+            if (y < height - 1) neighbours.add(Vector2d(x, y + 1))
             return neighbours
         }
 

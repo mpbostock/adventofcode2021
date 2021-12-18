@@ -1,6 +1,6 @@
 package mpbostock
 
-import mpbostock.Day05.Coordinate
+import mpbostock.Day05.Vector2d
 import mpbostock.Day05.Line
 import mpbostock.Day05.Lines
 import org.junit.jupiter.api.Assertions.*
@@ -19,7 +19,7 @@ internal class Day05Test {
         val line = Line.fromFile("0,0 -> 0,9")
         val coordinates = line.pixelCoordinates()
         assertEquals(10, coordinates.size)
-        for (y in 0..9) assertEquals(Coordinate(0, y), coordinates[y])
+        for (y in 0..9) assertEquals(Vector2d(0, y), coordinates[y])
     }
 
     @Test
@@ -28,7 +28,7 @@ internal class Day05Test {
         val coordinates = line.pixelCoordinates()
         assertEquals(10, coordinates.size)
         // Geordie indices, y, i pet!
-        for ((y, i) in (9 downTo 0).zip(0..9)) assertEquals(Coordinate(0, y), coordinates[i])
+        for ((y, i) in (9 downTo 0).zip(0..9)) assertEquals(Vector2d(0, y), coordinates[i])
     }
 
     @Test
@@ -42,7 +42,7 @@ internal class Day05Test {
         val line = Line.fromFile("0,9 -> 5,9")
         val coordinates = line.pixelCoordinates()
         assertEquals(6, coordinates.size)
-        for (x in 0..5) assertEquals(Coordinate(x, 9), coordinates[x])
+        for (x in 0..5) assertEquals(Vector2d(x, 9), coordinates[x])
     }
 
     @Test
@@ -50,7 +50,7 @@ internal class Day05Test {
         val line = Line.fromFile("5,9 -> 0,9")
         val coordinates = line.pixelCoordinates()
         assertEquals(6, coordinates.size)
-        for ((x, i) in (5 downTo 0).zip(0..5)) assertEquals(Coordinate(x, 9), coordinates[i])
+        for ((x, i) in (5 downTo 0).zip(0..5)) assertEquals(Vector2d(x, 9), coordinates[i])
     }
 
     @Test
@@ -70,7 +70,7 @@ internal class Day05Test {
         val line = Line.fromFile("0,0 -> 9,9")
         val coordinates = line.pixelCoordinates()
         assertEquals(10, coordinates.size)
-        for (i in coordinates.indices) assertEquals(Coordinate(i, i), coordinates[i])
+        for (i in coordinates.indices) assertEquals(Vector2d(i, i), coordinates[i])
     }
 
     @Test
@@ -78,7 +78,7 @@ internal class Day05Test {
         val line = Line.fromFile("9,9 -> 0,0")
         val coordinates = line.pixelCoordinates()
         assertEquals(10, coordinates.size)
-        for ((xy, i) in (9 downTo 0).zip(0..9)) assertEquals(Coordinate(xy, xy), coordinates[i])
+        for ((xy, i) in (9 downTo 0).zip(0..9)) assertEquals(Vector2d(xy, xy), coordinates[i])
     }
 
     @Test

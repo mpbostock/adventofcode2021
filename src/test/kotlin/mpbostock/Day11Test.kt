@@ -21,7 +21,7 @@ internal class Day11Test {
     @Test
     fun getNeighboursIncludesLeftIfInBounds() {
         val heightMap = Day09.HeightMap(arrayOf(intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(7, 8, 9)))
-        val neighbours = heightMap.getNeighbourValues(Day05.Coordinate(1, 1))
+        val neighbours = heightMap.getNeighbourValues(Day05.Vector2d(1, 1))
         assertEquals(4, neighbours.size)
         assertTrue(neighbours.contains(4))
     }
@@ -29,14 +29,14 @@ internal class Day11Test {
     @Test
     fun getNeighboursDoesNotIncludeLeftIfOutOfBounds() {
         val heightMap = Day09.HeightMap(arrayOf(intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(7, 8, 9)))
-        val neighbours = heightMap.getNeighbourValues(Day05.Coordinate(0, 1))
+        val neighbours = heightMap.getNeighbourValues(Day05.Vector2d(0, 1))
         assertEquals(3, neighbours.size)
     }
 
     @Test
     fun getNeighboursIncludesUpIfInBounds() {
         val heightMap = Day09.HeightMap(arrayOf(intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(7, 8, 9)))
-        val neighbours = heightMap.getNeighbourValues(Day05.Coordinate(1, 1))
+        val neighbours = heightMap.getNeighbourValues(Day05.Vector2d(1, 1))
         assertEquals(4, neighbours.size)
         assertTrue(neighbours.contains(2))
     }
@@ -44,14 +44,14 @@ internal class Day11Test {
     @Test
     fun getNeighboursDoesNotIncludeUpIfOutOfBounds() {
         val heightMap = Day09.HeightMap(arrayOf(intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(7, 8, 9)))
-        val neighbours = heightMap.getNeighbourValues(Day05.Coordinate(1, 0))
+        val neighbours = heightMap.getNeighbourValues(Day05.Vector2d(1, 0))
         assertEquals(3, neighbours.size)
     }
 
     @Test
     fun getNeighboursIncludesRightIfInBounds() {
         val heightMap = Day09.HeightMap(arrayOf(intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(7, 8, 9)))
-        val neighbours = heightMap.getNeighbourValues(Day05.Coordinate(1, 1))
+        val neighbours = heightMap.getNeighbourValues(Day05.Vector2d(1, 1))
         assertEquals(4, neighbours.size)
         assertTrue(neighbours.contains(6))
     }
@@ -59,14 +59,14 @@ internal class Day11Test {
     @Test
     fun getNeighboursDoesNotIncludeRightIfOutOfBounds() {
         val heightMap = Day09.HeightMap(arrayOf(intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(7, 8, 9)))
-        val neighbours = heightMap.getNeighbourValues(Day05.Coordinate(2, 1))
+        val neighbours = heightMap.getNeighbourValues(Day05.Vector2d(2, 1))
         assertEquals(3, neighbours.size)
     }
 
     @Test
     fun getNeighboursIncludesBottomIfInBounds() {
         val heightMap = Day09.HeightMap(arrayOf(intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(7, 8, 9)))
-        val neighbours = heightMap.getNeighbourValues(Day05.Coordinate(1, 1))
+        val neighbours = heightMap.getNeighbourValues(Day05.Vector2d(1, 1))
         assertEquals(4, neighbours.size)
         assertTrue(neighbours.contains(8))
     }
@@ -74,7 +74,7 @@ internal class Day11Test {
     @Test
     fun getNeighboursDoesNotIncludeBottomIfOutOfBounds() {
         val heightMap = Day09.HeightMap(arrayOf(intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(7, 8, 9)))
-        val neighbours = heightMap.getNeighbourValues(Day05.Coordinate(1, 2))
+        val neighbours = heightMap.getNeighbourValues(Day05.Vector2d(1, 2))
         assertEquals(3, neighbours.size)
     }
 
